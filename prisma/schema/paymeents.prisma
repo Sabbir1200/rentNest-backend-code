@@ -1,0 +1,30 @@
+enum PaymentProvider {
+  STRIPE
+  SSLCOMMERZ
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+model Payment {
+  id              String          @id @default(uuid())
+  rentalRequestId String          @unique 
+  tenantId        String
+  amount          Decimal         @db.Decimal(10, 2)
+  currency        String
+  provider        PaymentProvider
+  transactionId   String          @unique
+  status          PaymentStatus
+  paidAt          DateTime?
+  createdAt       DateTime        @default(now())
+
+  // Relations
+  rentalRequest RentalRequest @relation(fields: [rentalRequestId], references: [id], onDelete: Cascade)
+  tenant        User          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
