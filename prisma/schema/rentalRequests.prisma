@@ -22,7 +22,7 @@ model RentalRequest {
   // Relations
   tenant  User     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-  payment  Payment? // 1:1 Relationship
+  payment  Payment? 
 
   @@map("rental_requests")
 }
