@@ -1,14 +1,4 @@
-enum PaymentProvider {
-  STRIPE
-  SSLCOMMERZ
-}
 
-enum PaymentStatus {
-  PENDING
-  COMPLETED
-  FAILED
-  REFUNDED
-}
 
 model Payment {
   id              String          @id @default(uuid())

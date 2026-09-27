@@ -9,6 +9,35 @@
 * 🟢 You can import this file directly.
 */
 
+export const Role = {
+  TENANT: 'TENANT',
+  LANDLORD: 'LANDLORD',
+  ADMIN: 'ADMIN'
+} as const
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const UserStatus = {
+  ACTIVE: 'ACTIVE',
+  BANNED: 'BANNED'
+} as const
+
+export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
+
+export const RequestStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type RequestStatus = (typeof RequestStatus)[keyof typeof RequestStatus]
+
+
 export const PaymentProvider = {
   STRIPE: 'STRIPE',
   SSLCOMMERZ: 'SSLCOMMERZ'
@@ -25,32 +54,3 @@ export const PaymentStatus = {
 } as const
 
 export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
-
-
-export const RequestStatus = {
-  PENDING: 'PENDING',
-  APPROVED: 'APPROVED',
-  REJECTED: 'REJECTED',
-  ACTIVE: 'ACTIVE',
-  COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
-} as const
-
-export type RequestStatus = (typeof RequestStatus)[keyof typeof RequestStatus]
-
-
-export const UserStatus = {
-  ACTIVE: 'ACTIVE',
-  BANNED: 'BANNED'
-} as const
-
-export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
-
-
-export const Role = {
-  TENANT: 'TENANT',
-  LANDLORD: 'LANDLORD',
-  ADMIN: 'ADMIN'
-} as const
-
-export type Role = (typeof Role)[keyof typeof Role]

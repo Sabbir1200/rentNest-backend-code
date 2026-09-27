@@ -1,11 +1,4 @@
-enum RequestStatus {
-  PENDING
-  APPROVED
-  REJECTED
-  ACTIVE
-  COMPLETED
-  CANCELLED
-}
+
 
 model RentalRequest {
   id          String        @id @default(uuid())
