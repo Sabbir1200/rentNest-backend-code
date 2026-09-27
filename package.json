@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "prisma generate && tsup",
+    "db:seed": "prisma db seed",
     "postinstall": "prisma skills sync || exit 0"
   },
   "keywords": [],
