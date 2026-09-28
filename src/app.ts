@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import authRouter from "./modules/auth/auth.routes";
 import userRouter from "./modules/user/user.routes";
 import propertiesRouter from "./modules/properties/properties.routes";
+import categoriesRouter from "./modules/categories/categories.routes";
+import rentalRequestRouter from "./modules/rental-reqest/rental-request.routes";
 
 
 const app:Application = express();
@@ -20,6 +22,8 @@ app.get('/', (req, res)=>{
 app.use("/api/auth", authRouter);
 app.use("/api/auth", userRouter);
 app.use("/api/properties",propertiesRouter)
+app.use("/api/categories", categoriesRouter)
+app.use("/api/rentals",rentalRequestRouter)
 
 
 
