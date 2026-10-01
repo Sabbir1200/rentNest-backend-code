@@ -9,9 +9,12 @@ import categoriesRouter from "./modules/categories/categories.routes";
 import rentalRequestRouter from "./modules/rental-reqest/rental-request.routes";
 import landlordRouter from "./modules/lanlord/landlord.route";
 import adminRouter from "./modules/admin/admin.route";
+import paymentRouter from "./modules/payment/payment.route";
 
 
 const app:Application = express();
+
+app.post("/payments/webhooks",express.raw({type:"application.json"}))
 
 app.use(express.json())
 app.use(cookieParser());
@@ -28,6 +31,7 @@ app.use("/api/categories", categoriesRouter)
 app.use("/api/rentals",rentalRequestRouter)
 app.use("/api/landlord", landlordRouter)
 app.use("/api/admin", adminRouter);
+app.use("/api/payments",paymentRouter)
 
 
 

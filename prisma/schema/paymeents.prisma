@@ -7,7 +7,7 @@ model Payment {
   amount          Decimal         @db.Decimal(10, 2)
   currency        String
   provider        PaymentProvider
-  transactionId   String          @unique
+  transactionId   String?          @unique
   status          PaymentStatus
   paidAt          DateTime?
   createdAt       DateTime        @default(now())

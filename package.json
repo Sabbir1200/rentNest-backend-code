@@ -7,6 +7,7 @@
     "dev": "tsx watch src/server.ts",
     "build": "prisma generate && tsup",
     "db:seed": "prisma db seed",
+    "webhooks:stripe": "stripe listen --forward-to localhost:5000/webhooks --events checkout.session.completed,payment_intent.succeeded,payment_intent.payment_failed",
     "postinstall": "prisma skills sync || exit 0"
   },
   "keywords": [],
