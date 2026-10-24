@@ -111,7 +111,29 @@ export const getLandlordRequests = async (
     },
   });
 };
-
+// Get rental requests for landlord's properties
+export const getMyProperty = async (landlordId: string) => {
+  return prisma.property.findMany({
+    where: {
+      landlordId,
+    },
+    include: {
+      category: true,
+      rentalRequests: {
+        include: {
+          tenant: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+      reviews: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+};
 // Approve or reject rental request
 export const updateRentalRequestStatus = async (
   landlordId: string,

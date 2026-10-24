@@ -9,6 +9,11 @@ landlordRouter.post(
   auth("LANDLORD"),
   landlordController.postProperty,
 );
+landlordRouter.get(
+  "/properties",
+  auth("LANDLORD"),
+  landlordController.getMyProperty,
+);
 
 landlordRouter.put(
   "/properties/:id",

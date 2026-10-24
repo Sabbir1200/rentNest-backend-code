@@ -8,6 +8,7 @@ import {
   updateProperty,
   deleteProperty,
   getLandlordRequests,
+  getMyProperty as getMyPropertyService,
   updateRentalRequestStatus,
 } from "./landlord.service";
 
@@ -95,6 +96,23 @@ const getRequests = catchAsync(
     });
   }
 );
+// GET /api/landlord/properties
+const getMyProperty = catchAsync(
+  async (req: Request, res: Response) => {
+    if (!req.user) {
+      throw new AppError(401, "Unauthorized");
+    }
+
+    const properties = await getMyPropertyService(
+      req.user.id
+    );
+
+    sendResponse(res, {
+      message: "Properties retrieved successfully",
+      data: properties,
+    });
+  }
+);
 
 // PATCH /api/landlord/requests/:id
 const patchRequestStatus = catchAsync(
@@ -137,6 +155,7 @@ const landlordController = {
   removeProperty,
   getRequests,
   patchRequestStatus,
+  getMyProperty
 };
 
 export default landlordController;
